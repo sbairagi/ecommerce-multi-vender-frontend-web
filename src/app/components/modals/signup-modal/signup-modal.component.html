@@ -1,0 +1,117 @@
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="signupModalLabel">Signup</h5>
+        <button #closebutton id="closebutton" type="button" class="btn-close text-right" data-dismiss="modal"
+          aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <div class="modal-body">
+          <div class="d-flex justify-content-center mt120">
+            <div class="brand_logo_container mt100">
+              <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png"
+                class="brand_logo" alt="Logo">
+            </div>
+          </div>
+
+          <!-- loading Spinner -->
+          <div *ngIf="loadingSpinner" class="d-flex justify-content-center">
+            <div class=" loader"></div>
+          </div>
+          <h4 class="mt100 text-danger text-center fs-16">{{serverError}}</h4>
+
+
+          <div class="d-flex justify-content-center mt20">
+            <form [formGroup]="authRegForm" (ngSubmit)="saveRegForm()">
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" name="" class="form-control input_user" value="" placeholder="First Name"
+                  formControlName="first_name">
+              </div>
+              <div class="mb-3"
+                *ngIf="authRegForm['controls'].first_name.hasError('required') && authRegForm['controls'].first_name.touched">
+                <p class="text-danger">First Name is required.</p>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" formControlName="last_name" class="form-control input_user" value=""
+                  placeholder="Last Name">
+              </div>
+              <div class="mb-3"
+                *ngIf="authRegForm['controls'].last_name.hasError('required')  && authRegForm['controls'].last_name.touched">
+                <p class="text-danger">Last Name is required.</p>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="email" formControlName="email" class="form-control input_user" value=""
+                  placeholder="Email">
+              </div>
+              <div class="mb-3"
+                *ngIf="authRegForm['controls'].email.hasError('required') && authRegForm['controls'].email.touched">
+                <p class="text-danger">Email is required.</p>
+              </div>
+              <div class="mb-3" *ngIf="authRegForm['controls'].email.hasError('email')">
+                <p class="text-danger">Please enter correct email format.</p>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                </div>
+                <input type="tel" formControlName="phone_number" class="form-control input_user" value=""
+                  placeholder="Phone Number">
+              </div>
+              <div *ngIf="!authRegForm.controls.phone_number.valid && authRegForm['controls'].phone_number.touched">
+                <div class="mb-3" *ngIf="authRegForm['controls'].phone_number.hasError('required')">
+                  <p class="text-danger">Phone number is required.</p>
+                </div>
+                <div class="mb-3" *ngIf="authRegForm['controls'].phone_number.hasError('pattern')">
+                  <p class="text-danger">Should at least be 10 digits long.</p>
+                </div>
+              </div>
+              <div class="input-group mb-2">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" name="" class="form-control input_pass" value="" placeholder="password"
+                  formControlName="password">
+              </div>
+              <div *ngIf="!authRegForm.controls.password.valid && authRegForm['controls'].password.touched">
+                <div class="mb-3" *ngIf="authRegForm['controls'].password.hasError('required')">
+                  <p class="text-danger">Password is required.</p>
+                </div>
+                <div class="mb-3" *ngIf="authRegForm['controls'].password.hasError('minlength')">
+                  <p class="text-danger">Should at least be 6 characters long.</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="signupControlInline">
+                  <label class="custom-control-label" for="signupcustomControlInline">Remember me</label>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center mt-3 login_container">
+                <button type="submit" name="button" class="btn login_btn">Signup</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="mt-4">
+            <div class="d-flex justify-content-center links">
+              Already have an account? <a href="#" data-toggle="modal" data-target="#userloginModal"
+                class="btn-close text-right" data-dismiss="modal" aria-label="Close" class="ml-2">Log In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

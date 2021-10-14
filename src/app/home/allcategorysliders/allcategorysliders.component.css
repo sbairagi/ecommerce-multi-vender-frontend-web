@@ -1,0 +1,25 @@
+img{
+    border-radius: 25px; height: 129px;
+}
+
+.slide{
+    background-color: white;
+    border-radius: 25px;
+}
+
+
+
+@media only screen and (min-width: 992px) {
+    /* Zoom In #1 */
+    .hoverimg figure img {
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
+    .hoverimg figure:hover img {
+        -webkit-transform: scale(1.01);
+        transform: scale(1.01);
+    }
+
+}

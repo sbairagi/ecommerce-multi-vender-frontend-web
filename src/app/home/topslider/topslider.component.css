@@ -1,0 +1,19 @@
+
+
+.border-radius{
+    border-radius: 25px;
+}
+
+
+
+
+@media only screen and (min-width: 992px) {
+
+    .topslideimg{
+        height: 300px;
+    }
+
+    .topslider{
+        margin-top: 7rem!important;
+    }
+}

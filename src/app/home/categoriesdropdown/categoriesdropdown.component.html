@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row mt70 catbox">
+      <div class="dropdown" *ngFor="let category of AllCategories">
+        <div class="col-md-3 m-1">
+          <!-- <img src="../../favicon.ico"  class="img-fluid" alt=""> -->
+          <a class="dropdown-toggle" href="#" id="Dropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            {{category.category}}
+          </a>
+          <ul class="dropdown-menu dds" aria-labelledby="Dropdown">
+            <div *ngFor="let subcategory of category.subcategory">
+              <li>
+                <a class="dropdown-item" href="#">{{subcategory}}</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>

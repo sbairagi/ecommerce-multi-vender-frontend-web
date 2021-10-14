@@ -1,0 +1,43 @@
+.dds{
+    height: 300px;
+    overflow: auto;
+    color: white;
+    /* scrollbar-base-color: gold; */
+    font-family: sans-serif;
+    padding: 10px;
+  }
+
+  .catbox{
+    display: flex;
+    border-radius: 25px;
+    background-color: white;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu> a:after {
+    content: ">";
+    float: right;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+
+@media only screen and (min-width: 992px) {
+    .catbox{
+        position: fixed;
+        z-index: 999;
+    }
+
+}
