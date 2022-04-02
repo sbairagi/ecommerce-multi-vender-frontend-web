@@ -1,14 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h4 class="text-success m-md-4" *ngIf="electronics.length">Flash Sale on Electronics </h4>
+    </div>
+    <div class="col-4 p-2">
+      <h4 class="text-success m-md-4 fs-22" *ngIf="electronics.length"><a (click)="category(electronics)">View All</a></h4>
+    </div>
+  </div>
 
-<h4 class="text-success m-md-4" *ngIf="electronics.length">Flash Sale on Electronics </h4>
 <owl-carousel-o [options]="owlOptions" #carousel>
   <ng-container *ngFor="let i of electronics">
   <ng-template carouselSlide>
-    <div class="p-1" (click)="product(i['url'])" routerlink='productdetail'>
+    <div class="p-1" (click)="product(i['url'])" >
       <div class="slide p-1 hoverimg">
         <figure>
-        <img [src]="i['image1']"  alt="Content 1">
+        <img [src]="i['image1']"  loading="lazy" alt="Content 1">
         </figure>
-        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <p class="p-1 fs-15">{{i['product_name'] | slice:0:16}}</p>
         <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
       </div>
     </div>
@@ -16,15 +24,24 @@
 </ng-container>
 </owl-carousel-o>
 
+<div class="row">
+  <div class="col-8">
+    <h4 class="text-success m-md-4" *ngIf="men.length">Flash Sale on Men </h4>
+  </div>
+  <div class="col-4 p-2">
+    <h4 class="text-success m-md-4 fs-22" *ngIf="men.length"><a (click)="category(men)">View All</a></h4>
+  </div>
+</div>
 
-<h4 class="text-success m-md-4" *ngIf="men.length">Flash Sale on Men </h4>
+
+
 <owl-carousel-o [options]="owlOptions" #carousel>
   <ng-container *ngFor="let i of men">
   <ng-template carouselSlide>
-    <div class="p-1">
+    <div class="p-1" (click)="product(i['url'])">
       <div class="slide p-1">
         <img [src]="i['image1']" alt="Content 1">
-        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <p class="p-1 fs-15">{{i['product_name'] | slice:0:16}}</p>
         <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
       </div>
     </div>
@@ -32,14 +49,23 @@
 </ng-container>
 </owl-carousel-o>
 
-<h4 class="text-success m-md-4" *ngIf="women.length">Flash Sale on Women </h4>
+<div class="row">
+  <div class="col-8">
+    <h4 class="text-success m-md-4" *ngIf="women.length">Flash Sale on Women</h4>
+  </div>
+  <div class="col-4 p-2">
+    <h4 class="text-success m-md-4 fs-22" *ngIf="women.length"><a (click)="category(women)">View All</a></h4>
+  </div>
+</div>
+
+
 <owl-carousel-o [options]="owlOptions" #carousel>
   <ng-container *ngFor="let i of women">
   <ng-template carouselSlide>
-    <div class="p-1">
+    <div class="p-1" (click)="product(i['url'])">
       <div class="slide p-1">
         <img [src]="i['image1']" alt="Content 1">
-        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <p class="p-1 fs-15">{{i['product_name'] | slice:0:16}}</p>
         <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
       </div>
     </div>
@@ -47,14 +73,23 @@
 </ng-container>
 </owl-carousel-o>
 
-<h4 class="text-success m-md-4" *ngIf="baby_and_kids.length">Flash Sale on Baby & Kids </h4>
+<div class="row">
+  <div class="col-8">
+    <h4 class="text-success m-md-4" *ngIf="baby_and_kids.length">Flash Sale on Baby & Kids </h4>
+  </div>
+  <div class="col-4 p-2">
+    <h4 class="text-success m-md-4 fs-22" *ngIf="baby_and_kids.length"><a (click)="category(baby_and_kids)">View All</a></h4>
+  </div>
+</div>
+
+
 <owl-carousel-o [options]="owlOptions" #carousel>
   <ng-container *ngFor="let i of baby_and_kids">
   <ng-template carouselSlide>
-    <div class="p-1">
+    <div class="p-1" (click)="product(i['url'])">
       <div class="slide p-1">
         <img [src]="i['image1']" alt="Content 1">
-        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <p class="p-1 fs-15">{{i['product_name'] | slice:0:16}}</p>
         <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
       </div>
     </div>
@@ -62,14 +97,23 @@
 </ng-container>
 </owl-carousel-o>
 
-<h4 class="text-success m-md-4" *ngIf="home_and_furniture.length">Flash Sale on Home & Furniture</h4>
+<div class="row">
+  <div class="col-8">
+    <h4 class="text-success m-md-4" *ngIf="home_and_furniture.length">Flash Sale on Home & Furniture</h4>
+  </div>
+  <div class="col-4 p-2">
+    <h4 class="text-success m-md-4 fs-22" *ngIf="home_and_furniture.length"><a (click)="category(home_and_furniture)">View All</a></h4>
+  </div>
+</div>
+
+
 <owl-carousel-o [options]="owlOptions" #carousel>
   <ng-container *ngFor="let i of home_and_furniture">
   <ng-template carouselSlide>
-    <div class="p-1">
+    <div class="p-1" (click)="product(i['url'])">
       <div class="slide p-1">
         <img [src]="i['image1']" alt="Content 1">
-        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <p class="p-1 fs-15">{{i['product_name'] | slice:0:16}}</p>
         <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
       </div>
     </div>
@@ -78,14 +122,23 @@
 </owl-carousel-o>
 
 
-<h4 class="text-success m-md-4" *ngIf="sports_or_books_or_more.length">Flash Sale on Sports, Books & More</h4>
+<div class="row">
+  <div class="col-8">
+    <h4 class="text-success m-md-4" *ngIf="sports_or_books_or_more.length">Flash Sale on Sports, Books & More</h4>
+  </div>
+  <div class="col-4 p-2">
+    <h4 class="text-success m-md-4 fs-22" *ngIf="sports_or_books_or_more.length"><a (click)="category(sports_or_books_or_more)">View All</a></h4>
+  </div>
+</div>
+
+
 <owl-carousel-o [options]="owlOptions" #carousel>
   <ng-container *ngFor="let i of sports_or_books_or_more">
   <ng-template carouselSlide>
-    <div class="p-1">
+    <div class="p-1" (click)="product(i['url'])">
       <div class="slide p-1">
         <img [src]="i['image1']" alt="Content 1">
-        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <p class="p-1 fs-15">{{i['product_name'] | slice:0:16}}</p>
         <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
       </div>
     </div>
@@ -93,17 +146,28 @@
 </ng-container>
 </owl-carousel-o>
 
-<h4 class="text-success m-md-4" *ngIf="tvs_and_appliances.length">Flash Sale on Tvs & Appliances</h4>
+
+<div class="row">
+  <div class="col-8">
+    <h4 class="text-success m-md-4" *ngIf="tvs_and_appliances.length">Flash Sale on Tvs & Appliances</h4>
+  </div>
+  <div class="col-4 p-2">
+    <h4 class="text-success m-md-4 fs-22" *ngIf="tvs_and_appliances.length"><a (click)="category(tvs_and_appliances)">View All</a></h4>
+  </div>
+</div>
+
 <owl-carousel-o [options]="owlOptions" #carousel>
   <ng-container *ngFor="let i of tvs_and_appliances">
   <ng-template carouselSlide>
-    <div class="p-1">
+    <div class="p-1" (click)="product(i['url'])">
       <div class="slide p-1">
         <img [src]="i['image1']" alt="Content 1">
-        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <p class="p-1 fs-15">{{i['product_name'] | slice:0:16}}</p>
         <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
       </div>
     </div>
   </ng-template>
 </ng-container>
 </owl-carousel-o>
+
+</div>

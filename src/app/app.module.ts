@@ -24,6 +24,9 @@ import { TrandingproductsliderComponent } from './home/trandingproductslider/tra
 import { AllcategoryslidersComponent } from './home/allcategorysliders/allcategorysliders.component';
 import { ProductdetailpageComponent } from './home/productdetailpage/productdetailpage.component';
 import { RegistrationpageComponent } from './sellerpages/registrationpage/registrationpage.component';
+import { FilterproductspageComponent } from './userpages/filterproductspage/filterproductspage.component';
+import { AddproductsComponent } from './sellerpages/addproducts/addproducts.component';
+import { AllproductsComponent } from './sellerpages/allproducts/allproducts.component';
 
 
 @NgModule({
@@ -37,15 +40,13 @@ import { RegistrationpageComponent } from './sellerpages/registrationpage/regist
     FooterComponent,
     UsersComponent,
     SellersComponent,
-    SellerhomeComponent,
     HomeComponent,
     CategoriesdropdownComponent,
-    TopsliderComponent,
+    AllcategoryslidersComponent,
     DealofthedaysliderComponent,
     TrandingproductsliderComponent,
-    AllcategoryslidersComponent,
-    ProductdetailpageComponent,
-    RegistrationpageComponent
+    TopsliderComponent,
+    ProductdetailpageComponent
   ],
   imports: [
     BrowserModule,

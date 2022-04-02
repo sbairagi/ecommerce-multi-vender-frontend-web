@@ -87,8 +87,17 @@ export class AllcategoryslidersComponent implements OnInit {
 
   product(producturl:number){
     this.apiservice.productdetailurl = producturl.toString()
-    this.router.navigate(['productdetail'])
+    this.router.navigate(['/user/productdetail'])
     window.scrollTo(0, 0);
+  }
+
+  category(category:any){
+   
+   if (category.length){
+    console.log(category[0]['category'])
+    this.apiservice.category = category[0]['category']
+    this.router.navigate(['/user/filterproducts'])
+   }
   }
 
 }

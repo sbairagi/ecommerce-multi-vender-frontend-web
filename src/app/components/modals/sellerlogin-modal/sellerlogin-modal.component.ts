@@ -44,7 +44,6 @@ export class SellerloginModalComponent implements OnInit {
   }
 
   saveLoginForm() {
-    console.log('values : ',this.authLoginForm.value)
     this.loginUser();
   }
 
@@ -53,7 +52,8 @@ export class SellerloginModalComponent implements OnInit {
     this.loadingSpinner = true
     authObs = this.apiService.loginUser(this.authLoginForm.value.email, this.authLoginForm.value.password);
     authObs.subscribe((result: TokenObj) => {
-      this.cookieService.set('authToken', result.token);
+      // this.cookieService.set('authToken', result.token);
+      localStorage.setItem('authToken', result.token);
       // const decoded = jwt_decode(result.token);
       const decoded = this.apiService.parseJwt(result.token)
       const userDetails = {
@@ -66,15 +66,18 @@ export class SellerloginModalComponent implements OnInit {
       localStorage.setItem('userDetails', JSON.stringify(userDetails));
       this.loadingSpinner = false
       if (!decoded.is_Ap) {
-        this.router.navigate(['/registration']);
-        this.serverError = 'redirect to seller Registration form';
-        console.log('redirect to seller Registration form')
+        let a = <HTMLButtonElement>document.getElementById('closesellerModal');
+        a.click();
+        localStorage.setItem('accounttype', 'seller');
+        this.router.navigate(['/seller/registration']);
+        // this.serverError = 'redirect to seller Registration form';
+        // console.log('redirect to seller Registration form')
       } else {
         let a = <HTMLButtonElement>document.getElementById('closesellerModal');
-        let b = <HTMLButtonElement>document.getElementById('menu-button');
-        b.click();
         a.click();
-        this.router.navigate(['/seller']);
+        // this.apiService.redirectTo.next('/seller/home')
+        localStorage.setItem('accounttype', 'seller');
+        this.router.navigate(['/seller/home']);
       }
     },
     errorRes => {

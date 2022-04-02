@@ -53,7 +53,8 @@ export class SignupModalComponent implements OnInit {
       this.apiService.loginUser(
         this.authRegForm.value.email,
         this.authRegForm.value.password).subscribe(loginResponse => {
-          this.cookieService.set('authToken', loginResponse.token);
+          // this.cookieService.set('authToken', loginResponse.token);
+          localStorage.setItem('authToken', loginResponse.token);
           const decoded = this.apiService.parseJwt(loginResponse.token);
           const userDetails = {
             first_name: decoded.first_name,
@@ -65,14 +66,12 @@ export class SignupModalComponent implements OnInit {
           localStorage.setItem('userDetails', JSON.stringify(userDetails));
           this.loadingSpinner = false
           let a = <HTMLButtonElement>document.getElementById('closebutton');
-          let b = <HTMLButtonElement>document.getElementById('menu-button');
-          b.click();
           a.click();
-          if (decoded.is_seller) {
-            this.router.navigate(['/home'], { queryParamsHandling: 'preserve' });
-          } else {
-            this.router.navigate(['/home'], { queryParamsHandling: 'preserve' });
-          }
+          // if (decoded.is_seller) {
+          this.router.navigate(['/user/home'], { queryParamsHandling: 'preserve' });
+          // } else {
+          //   this.router.navigate(['/home'], { queryParamsHandling: 'preserve' });
+          // }
         }, errorRes => {
           this.logRegErrors(errorRes);
           

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark primary-bg fixed-top">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark primary-bg fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="home">Shopping Web</a>
       <button class="navbar-toggler" type="button" id="menu-button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,31 +9,21 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="home" routerLinkActive="active" aria-current="page" >Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!islogin">
             <a class="nav-link" data-toggle="modal"
             data-target="#signupModal">Sign Up</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!islogin">
             <a class="nav-link"  data-toggle="modal"
             data-target="#userloginModal">User Login</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!islogin">
             <a class="nav-link" href="#" data-toggle="modal"
             data-target="#sellerloginModal">Seller Login</a>
           </li>
-          <!-- <li class="nav-item dropdown" *ngFor="let category of AllCategories">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-              {{category.category}}
-            </a>
-            <ul class="dropdown-menu dds" aria-labelledby="navbarDropdown">
-              <div *ngFor="let subcategory of category.subcategory">
-                <li>
-                  <a class="dropdown-item" href="#">{{subcategory}}</a>
-                </li>
-                <li><hr class="dropdown-divider"></li>
-              </div>
-            </ul>
-          </li> -->
+          <li class="nav-item" *ngIf="islogin">
+            <a class="nav-link" (click)="logout()">Log Out</a>
+          </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -43,4 +33,23 @@
     </div>
   </nav>
 
- 
+  -->
+
+  <nav class="navbar navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1"><a routerLink="home" style="text-decoration: none; color: black;">Ecommerce User Website</a></span>
+      <div id="mySidenav" [style]="width" class="sidenav">
+        <a href="javascript:void(0)"  class="closebtn" (click)="closeNav()">&times;</a>
+        <a routerLink="home" (click)="closeNav()"  routerLinkActive="active">Home</a>
+        <a (click)="closeNav()" *ngIf="!islogin" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+        <a (click)="closeNav()" *ngIf="!islogin" data-toggle="modal" data-target="#userloginModal">User Login</a>
+        <a (click)="closeNav()" *ngIf="!islogin" href="#" data-toggle="modal" data-target="#sellerloginModal">Seller Login</a>
+        <a (click)="closeNav()" >About</a>
+        <a (click)="closeNav()" >Services</a>
+        <a (click)="closeNav()" >Clients</a>
+        <a (click)="logout()" *ngIf="islogin">Logout</a>
+      </div>
+      
+      <span style="font-size:30px;cursor:pointer;" (click)="openNav()">&#9776;</span>
+    </div>
+  </nav>

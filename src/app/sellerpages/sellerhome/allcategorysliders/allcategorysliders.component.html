@@ -1,0 +1,109 @@
+
+<h4 class="text-success m-md-4" *ngIf="electronics.length">Flash Sale on Electronics </h4>
+<owl-carousel-o [options]="owlOptions" #carousel>
+  <ng-container *ngFor="let i of electronics">
+  <ng-template carouselSlide>
+    <div class="p-1" (click)="product(i['url'])" >
+      <div class="slide p-1 hoverimg bg-light">
+        <figure>
+        <img [src]="i['image1']"  loading="lazy" alt="Content 1">
+        </figure>
+        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+</owl-carousel-o>
+
+
+<h4 class="text-success m-md-4" *ngIf="men.length">Flash Sale on Men </h4>
+<owl-carousel-o [options]="owlOptions" #carousel>
+  <ng-container *ngFor="let i of men">
+  <ng-template carouselSlide>
+    <div class="p-1">
+      <div class="slide p-1 hoverimg bg-light">
+        <img [src]="i['image1']" alt="Content 1">
+        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+</owl-carousel-o>
+
+<h4 class="text-success m-md-4" *ngIf="women.length">Flash Sale on Women </h4>
+<owl-carousel-o [options]="owlOptions" #carousel>
+  <ng-container *ngFor="let i of women">
+  <ng-template carouselSlide>
+    <div class="p-1">
+      <div class="slide p-1 hoverimg bg-light">
+        <img [src]="i['image1']" alt="Content 1">
+        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+</owl-carousel-o>
+
+<h4 class="text-success m-md-4" *ngIf="baby_and_kids.length">Flash Sale on Baby & Kids </h4>
+<owl-carousel-o [options]="owlOptions" #carousel>
+  <ng-container *ngFor="let i of baby_and_kids">
+  <ng-template carouselSlide>
+    <div class="p-1">
+      <div class="slide p-1 hoverimg bg-light">
+        <img [src]="i['image1']" alt="Content 1">
+        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+</owl-carousel-o>
+
+<h4 class="text-success m-md-4" *ngIf="home_and_furniture.length">Flash Sale on Home & Furniture</h4>
+<owl-carousel-o [options]="owlOptions" #carousel>
+  <ng-container *ngFor="let i of home_and_furniture">
+  <ng-template carouselSlide>
+    <div class="p-1">
+      <div class="slide p-1 hoverimg bg-light">
+        <img [src]="i['image1']" alt="Content 1">
+        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+</owl-carousel-o>
+
+
+<h4 class="text-success m-md-4" *ngIf="sports_or_books_or_more.length">Flash Sale on Sports, Books & More</h4>
+<owl-carousel-o [options]="owlOptions" #carousel>
+  <ng-container *ngFor="let i of sports_or_books_or_more">
+  <ng-template carouselSlide>
+    <div class="p-1">
+      <div class="slide p-1 hoverimg bg-light">
+        <img [src]="i['image1']" alt="Content 1">
+        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+</owl-carousel-o>
+
+<h4 class="text-success m-md-4" *ngIf="tvs_and_appliances.length">Flash Sale on Tvs & Appliances</h4>
+<owl-carousel-o [options]="owlOptions" #carousel>
+  <ng-container *ngFor="let i of tvs_and_appliances">
+  <ng-template carouselSlide>
+    <div class="p-1">
+      <div class="slide p-1 hoverimg bg-light">
+        <img [src]="i['image1']" alt="Content 1">
+        <p class="p-1 fs-15">{{i['product_name']}}</p>
+        <del class="pl-2">{{i['price_not']}} $</del><b class="p-2">{{i['price']}} $</b>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+</owl-carousel-o>

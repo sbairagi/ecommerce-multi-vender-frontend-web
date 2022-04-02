@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sellerhome.component.css']
 })
 export class SellerhomeComponent implements OnInit {
+  
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  
 
 }

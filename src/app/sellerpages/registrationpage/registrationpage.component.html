@@ -11,18 +11,21 @@
                 <!-- fieldsets -->
                 <fieldset *ngIf="step == 1">
                     <h2 class="fs-title">Personal Details</h2>
-                    <input type="text" formControlName="name"
-                        [ngClass]="{ 'is-invalid': personal_step && personal.name.errors }" placeholder="Full Name" />
-                    <div *ngIf="personal_step && personalDetails.controls.name.errors">
-                        <div *ngIf="personal.name.errors?.required">Name is required</div>
+                    <h4 class="fs-title text-left fs-10">GST number</h4>
+                    <input type="number" formControlName="gst_Number"
+                        [ngClass]="{ 'is-invalid': personal_step && personal.gst_Number.errors }" placeholder="GST Number" />
+                    <div *ngIf="personal_step && personalDetails.controls.gst_Number.errors">
+                        <div *ngIf="personal.gst_Number.errors?.required" class="danger">GST number is required</div>
                     </div>
-                    <input type="text" formControlName="email" name="email" placeholder="Email" />
-                    <div *ngIf="personal_step && personalDetails.controls.email.errors">
-                        <div *ngIf="personal.email.errors?.required">Email is required</div>
+                    <h4 class="fs-title text-left fs-10">Shop Name / Company Name</h4>
+                    <input type="text" formControlName="shop_Name" name="text" placeholder="Shop Name" />
+                    <div *ngIf="personal_step && personalDetails.controls.shop_Name.errors">
+                        <div *ngIf="personal.shop_Name.errors?.required">Shop Name is required</div>
                     </div>
-                    <input type="text" formControlName="phone" name="phone" placeholder="Phone" />
-                    <div *ngIf="personal_step && personalDetails.controls.phone.errors">
-                        <div *ngIf="personal.phone.errors?.required">Phone is required</div>
+                    <h4 class="fs-title text-left fs-10">Whatsapp Number</h4>
+                    <input type="number" formControlName="whatsapp_no" name="phone" placeholder="Whatsapp Number" />
+                    <div *ngIf="personal_step && personalDetails.controls.whatsapp_no.errors">
+                        <div *ngIf="personal.whatsapp_no.errors?.required">Whatsapp Number is required</div>
                     </div>
                     <input (click)="next()" type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
@@ -30,14 +33,32 @@
             <form [formGroup]="addressDetails" id="msform">
                 <fieldset *ngIf="step == 2">
                     <h2 class="fs-title">Address Details</h2>
+                    <h4 class="fs-title text-left fs-10">Shop Address</h4>
+                    <textarea rows="5" cols="5" formControlName="shop_Address" placeholder="Shop Address"></textarea>
+                    <div *ngIf="address_step && addressDetails.controls.shop_Address.errors">
+                        <div *ngIf="address.shop_Address.errors?.required">Shop Address is required</div>
+                    </div>
+                    <h4 class="fs-title text-left fs-10">landmark</h4>
+                    <input type="text" formControlName="landmark" placeholder="Landmark" />
+                    <div *ngIf="address_step && addressDetails.controls.landmark.errors">
+                        <div *ngIf="address.landmark.errors?.required">landmark is required</div>
+                    </div>
+                    <h4 class="fs-title text-left fs-10">Locality</h4>
+                    <input type="text" formControlName="locality" placeholder="Locality" />
+                    <div *ngIf="address_step && addressDetails.controls.locality.errors">
+                        <div *ngIf="address.locality.errors?.required">Locality is required</div>
+                    </div>
+                    <h4 class="fs-title text-left fs-10">City</h4>
                     <input type="text" formControlName="city" placeholder="City" />
                     <div *ngIf="address_step && addressDetails.controls.city.errors">
                         <div *ngIf="address.city.errors?.required">City is required</div>
+                    </div> 
+                    <h4 class="fs-title text-left fs-10">State</h4>
+                    <input type="text" formControlName="state" placeholder="State" />
+                    <div *ngIf="address_step && addressDetails.controls.state.errors">
+                        <div *ngIf="address.state.errors?.required">State is required</div>
                     </div>
-                    <textarea rows="5" cols="5" formControlName="address" placeholder="address"></textarea>
-                    <div *ngIf="address_step && addressDetails.controls.address.errors">
-                        <div *ngIf="address.address.errors?.required">Address is required</div>
-                    </div>
+                    <h4 class="fs-title text-left fs-10">Pincode</h4>
                     <input type="text" formControlName="pincode" placeholder="Pincode" />
                     <div *ngIf="address_step && addressDetails.controls.pincode.errors">
                         <div *ngIf="address.pincode.errors?.required">Pincode is required</div>
@@ -47,21 +68,29 @@
                     <input (click)="next()" type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
             </form>
-            <form [formGroup]="addressDetails" id="msform">
+            <form [formGroup]="educationalDetails" class="mb-5" id="msform">
                 <fieldset *ngIf="step == 3">
-                    <h2 class="fs-title">Educational Details</h2>
-                    <input type="text" formControlName="highest_qualification" placeholder="Highest Qualification" />
-                    <div *ngIf="education_step && educationalDetails.controls.highest_qualification.errors">
-                        <div *ngIf="education.highest_qualification.errors?.required">Highest qualification is required
+                    <h2 class="fs-title">Documents Details</h2>
+                    <h4 class="fs-title text-left fs-10">Your Image</h4>
+                    <input type="file" (change)="onphotoChanged($event)" formControlName="photo" placeholder="Your Image" />
+                    <div *ngIf="education_step && educationalDetails.controls.photo.errors">
+                        <div *ngIf="education.photo.errors?.required">Photo is required
                         </div>
                     </div>
-                    <input type="text" formControlName="university" placeholder="University" />
-                    <div *ngIf="education_step && educationalDetails.controls.university.errors">
-                        <div *ngIf="education.university.errors?.required">University is required</div>
+                    <h4 class="fs-title text-left fs-10">Adhar Card</h4>
+                    <input type="file" (change)="onadharcardChanged($event)" formControlName="adharcard" placeholder="Adhar Card" />
+                    <div *ngIf="education_step && educationalDetails.controls.adharcard.errors">
+                        <div *ngIf="education.adharcard.errors?.required">Adhar Card is required</div>
                     </div>
-                    <input type="text" formControlName="total_marks" placeholder="Total Marks" />
-                    <div *ngIf="education_step && educationalDetails.controls.total_marks.errors">
-                        <div *ngIf="education.total_marks.errors?.required">Total marks is required</div>
+                    <h4 class="fs-title text-left fs-10">Pan Card</h4>
+                    <input type="file" (change)="onpancardChanged($event)" formControlName="pancard" placeholder="Pan Card" />
+                    <div *ngIf="education_step && educationalDetails.controls.pancard.errors">
+                        <div *ngIf="education.pancard.errors?.required">Pan Card is required</div>
+                    </div>
+                    <h4 class="fs-title text-left fs-10">Gumasta</h4>
+                    <input type="file" (change)="ongumastaChanged($event)" formControlName="gumasta" placeholder="Gumasta" />
+                    <div *ngIf="education_step && educationalDetails.controls.gumasta.errors">
+                        <div *ngIf="education.gumasta.errors?.required">Gumasta is required</div>
                     </div>
                     <input (click)="previous()" type="button" name="previous" class="previous action-button-previous"
                         value="Previous" />

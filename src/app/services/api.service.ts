@@ -10,6 +10,22 @@ interface categoriesproducts {
   results: []
 }
 
+interface SellerDetail{
+  photo: File,
+  adharcard: File,
+  pancard: File,
+  gumasta: File,
+  gst_Number: String,
+  shop_Name: String,
+  whatsapp_no: Number,
+  shop_Address: String,
+  pincode: Number,
+  landmark: String,
+  locality: String,
+  city: String,
+  state: String,
+}
+
 interface productsdetail {
   product_name: string
   category: string
@@ -32,7 +48,13 @@ interface productsdetail {
   providedIn: 'root'
 })
 export class ApiService {
+  category: string = '';
+  root_category: string = '';
+  subcategory: string = '';
+
+
   authState = new BehaviorSubject(false);
+  approvedsellerOrAuthicated = new BehaviorSubject(false);
   productdetailurl:string = ''
   baseUrl = 'http://127.0.0.1:8000/api/';
   authUrl = 'http://127.0.0.1:8000/auth/';
@@ -51,12 +73,14 @@ export class ApiService {
       Authorization: `JWT ${token}`
     });
   }
+
   fileuploadAuthHeaders() {
     const token = this.cookieService.get('authToken');
     return new HttpHeaders({
       Authorization: `JWT ${token}`
     });
   }
+
   loginUser(email: string, password: string) {
     const body = JSON.stringify({ email, password });
     return this.httpClient.post<any>(
@@ -87,9 +111,7 @@ export class ApiService {
   }
 
   
-  logout() {
-    this.authState.next(false);
-  }
+  
 
   allcategory(){
     return this.httpClient.get<any>(
@@ -113,6 +135,51 @@ export class ApiService {
   }
 
   
+      
+
+  sellerDetail(
+    formData: FormData
+    // photo: File,
+    // adharcard: File,
+    // pancard: File,
+    // gumasta: File,
+    // gst_Number: String,
+    // shop_Name: String,
+    // whatsapp_no: Number,
+    // shop_Address: String,
+    // pincode: Number,
+    // landmark: String,
+    // locality: String,
+    // city: String,
+    // state: String,
+  ) {
+    // const body = JSON.stringify({
+    //   photo,
+    //   adharcard,
+    //   pancard,
+    //   gumasta,
+    //   gst_Number,
+    //   shop_Name,
+    //   whatsapp_no,
+    //   shop_Address,
+    //   pincode,
+    //   landmark,
+    //   locality,
+    //   city,
+    //   state
+    // });
+
+    // const token = this.cookieService.get('authToken')
+    // console.log(body)
+    const token = this.cookieService.get('authToken');
+  
+    return this.httpClient.post<SellerDetail>(
+      'http://127.0.0.1:8000/api/sellerprofile/',
+      formData,{ headers : { Authorization: `JWT ${token}`}}
+    );
+  }
+
+  
   // Firebase Device Service
   // createFCMDevice(payload) {
   //   const body = JSON.stringify(payload);
@@ -126,17 +193,43 @@ export class ApiService {
   //     headers: this.getAuthHeaders()
   //   });
   // }
+
+
+  logout() {
+    this.authState.next(false);
+    this.approvedsellerOrAuthicated.next(false);
+    // this.cookieService.deleteAll()
+    localStorage.clear();
+  }
   
   // Returns whether the user is currently authenticated
   // Could check if current token is still valid
   isAuthenticated() {
-    const token = this.cookieService.get('authToken');
+    // const token = this.cookieService.get('authToken');
+    const token = localStorage.getItem('authToken');
     if (token) {
       this.authState.next(true);
       return this.authState.value;
     } else {
       return this.authState.value;
     }
+  }
+
+  isAuthenticatedOrApprovedSeller() {
+    // const token = this.cookieService.get('authToken');
+    const token = localStorage.getItem('authToken');
+    if (token){
+      let userdetail = this.parseJwt(token)
+      if (userdetail.is_Ap) {
+        this.approvedsellerOrAuthicated.next(true)
+        return this.approvedsellerOrAuthicated.value;
+      } else {
+        return this.approvedsellerOrAuthicated.value;
+      }
+    }else{
+      return this.approvedsellerOrAuthicated.value;
+    }
+    
   }
 
   parseJwt(token: string) {

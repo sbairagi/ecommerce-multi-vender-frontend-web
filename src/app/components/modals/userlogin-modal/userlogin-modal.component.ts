@@ -48,7 +48,6 @@ export class UserloginModalComponent implements OnInit {
   }
 
   saveLoginForm() {
-    console.log('values : ',this.authLoginForm.value)
     this.loginUser();
   }
 
@@ -58,7 +57,8 @@ export class UserloginModalComponent implements OnInit {
     this.loadingSpinner = true
     authObs = this.apiService.loginUser(this.authLoginForm.value.email, this.authLoginForm.value.password);
     authObs.subscribe((result: TokenObj) => {
-      this.cookieService.set('authToken', result.token);
+      // this.cookieService.set('authToken', result.token);
+      localStorage.setItem('authToken', result.token);
       const decoded = this.apiService.parseJwt(result.token)
       const userDetails = {
         first_name: decoded.first_name,
@@ -69,17 +69,15 @@ export class UserloginModalComponent implements OnInit {
       };
       localStorage.setItem('userDetails', JSON.stringify(userDetails));
       this.loadingSpinner = false
+      
       let a = <HTMLButtonElement>document.getElementById('usercloseModal');
-      let b = <HTMLButtonElement>document.getElementById('menu-button');
-      b.click();
+      // let b = <HTMLButtonElement>document.getElementById('menu-button');
+      // b.click();
       a.click();
-      console.log('close')
-      if (!decoded.is_seller) {
-        this.router.navigate(['/home']);
-        console.log('is_seller is false')
-      } else {
-        this.router.navigate(['/seller']);
-      }
+      this.apiService.authState.next(true);
+      this.apiService.approvedsellerOrAuthicated.next(true);
+      localStorage.setItem('accounttype', 'user');
+      this.router.navigate(['/user/home']);
     },
     errorRes => {
       if (errorRes.error.email) {

@@ -1,1 +1,42 @@
-<p>sellers works!</p>
+
+<!-- <app-header></app-header> -->
+
+<!-- Signup Modal -->
+  <nav class="navbar navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1"><a routerLink="home" style="text-decoration: none; color: black;">Ecommerce Seller Website</a></span>
+      <div id="mySidenav" [style]="width" class="sidenav">
+        <a href="javascript:void(0)"  class="closebtn" (click)="closeNav()">&times;</a>
+        
+        <a routerLink="home" (click)="closeNav()">Home</a>
+        <a routerLink="addproducts" (click)="closeNav()">Add Product</a>
+        <a routerLink="allproducts" (click)="closeNav()">All Products</a>
+        <a href="#">About</a>
+        <a (click)="logout()">Logout</a>
+      </div>
+      
+      <span style="font-size:30px;cursor:pointer;" (click)="openNav()">&#9776;</span>
+    </div>
+  </nav>
+
+
+
+<app-signup-modal></app-signup-modal>
+
+
+
+<!-- User Login Modal -->
+
+
+<app-userlogin-modal></app-userlogin-modal>
+
+
+<!-- Seller Login Modal -->
+
+<app-sellerlogin-modal></app-sellerlogin-modal>
+
+<!-- Forgot Password Modal -->
+
+<app-forgotpassword-modal></app-forgotpassword-modal>
+
+<router-outlet></router-outlet>

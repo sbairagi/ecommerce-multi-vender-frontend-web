@@ -1,0 +1,116 @@
+
+<div class="container mt75">
+<form class="p-4 mb-3" style="background-color: white;">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputEmail4">Product Name</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="Product Name">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="category">Category</label>
+      <select class="form-control form-control-sm" id="category">
+        <option>Category</option>
+      </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="rootcategory">Root Category</label>
+        <select class="form-control form-control-sm" id="rootcategory">
+          <option selected>Root Category</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="subcategory">Sub Category</label>
+        <select class="form-control form-control-sm" id="subcategory">
+          <option selected>Sub Category</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="gst">GST</label>
+      <select class="form-control form-control-sm" id="gst">
+        <option selected>GST</option>
+        <option>0</option>
+        <option>3</option>
+        <option>5</option>
+        <option>12</option>
+        <option>18</option>
+        <option>28</option>
+      </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" id="price" placeholder="Price">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="pricenot">Price Not</label>
+        <input type="number" class="form-control" id="pricenot" placeholder="Price Not">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="desc">Description</label>
+      <textarea class="form-control" id="desc" placeholder="Description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Address 2</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="image1">Image 1</label>
+        <input type="file" class="form-control-file" id="image1">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="image2">Image 2</label>
+        <input type="file" class="form-control-file" id="image2">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="image3">Image 3</label>
+        <input type="file" class="form-control-file" id="image3">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="image4">Image 4</label>
+        <input type="file" class="form-control-file" id="image4">
+      </div>
+      <div class="form-group">
+        <label class="switch">
+            <input type="checkbox" #CheckBox [checked]="CheckBox" (change)="checkBox(CheckBox.checked)">
+            <span class="slider round"></span>
+        </label>
+      </div>
+    </div> 
+    <div *ngIf="showproductsizes">
+        <div class="form-row my-2" style="border: 1px solid gray;" *ngFor="let i of size; let index ">
+            
+            <div class="form-group col-12 text-right" *ngIf="index !=1">
+                <i class="fas fa-window-close fs-20" (click)="canclesizebox()"></i>
+            </div>
+            <div class="form-group col-2">
+            <label for="colour">Colour</label>
+            <input type="color" class="form-control-file color" id="colour">
+            </div>
+            <div class="form-group col-5">
+            <label for="size">Size</label>
+            <input type="text" class="form-control-file" id="size">
+            </div>
+            <div class="form-group col-5">
+            <label for="quantity">quantity</label>
+            <input type="number" class="form-control-file" id="quantity">
+            </div>
+        </div>
+    <div>
+        <div class="form-group col-md-12 text-center">
+            <!-- <label for="addmore">Add More</label> -->
+            <i class="fas fa-plus-circle fs-38" (click)="addmorequantity()"></i>
+        </div>
+    </div>
+    </div>
+    <div class="form-row" *ngIf="productsize">
+        <div class="form-group col-md-4">
+          <label for="quantity">quantity</label>
+          <input type="number" class="form-control-file" id="quantity">
+        </div>
+    </div>
+    <!-- showproductsizes -->
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </form>
+
+</div>

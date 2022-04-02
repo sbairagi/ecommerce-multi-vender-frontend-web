@@ -4,28 +4,16 @@ import { HomeComponent } from './home/home.component';
 import { ProductdetailpageComponent } from './home/productdetailpage/productdetailpage.component';
 import { RegistrationpageComponent } from './sellerpages/registrationpage/registrationpage.component';
 import { SellersComponent } from './sellers/sellers.component';
+import { ApiService } from './services/api.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UsersComponent } from './users/users.component';
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'user/home',
     pathMatch: 'full',
   },
-  {
-      path: 'home',
-      component: HomeComponent,
-      // loadChildren: () => import('./home/home.module').then( m => m.HomeModule)
-    },{
-      path: 'productdetail',
-      component: ProductdetailpageComponent,
-      // loadChildren: () => import('./home/home.module').then( m => m.HomeModule)
-    },{
-      path: 'registration',
-      component: RegistrationpageComponent,
-      // loadChildren: () => import('./home/home.module').then( m => m.HomeModule)
-    },
     
   {
     path: 'user',
@@ -34,7 +22,6 @@ const routes: Routes = [
       {
         path: '',
         component: UsersComponent,
-        canActivate: [AuthGuardService],
         loadChildren: () => import('./users/users.module').then( m => m.UsersModule)
         // loadChildren: './users/users.module#UsersModule'
       }
@@ -63,4 +50,11 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+  constructor(private apiservice: ApiService){
+    // this.apiservice.redirectTo.subscribe(data => {
+    //   console.log(data)
+      
+    // })
+  }
+}
